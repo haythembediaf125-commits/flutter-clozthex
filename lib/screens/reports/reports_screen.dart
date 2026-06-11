@@ -183,7 +183,7 @@ class _SalesTab extends StatelessWidget {
         // Stats
         GridView.count(
           crossAxisCount: 2, shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
-          crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: 1.4,
+          crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: 1.3,
           children: [
             StatCard(title: 'إجمالي المبيعات', value: '${total.toStringAsFixed(2)} $currency', icon: Icons.monetization_on_outlined, color: AppColors.gold),
             StatCard(title: 'عدد الفواتير', value: '$completed', icon: Icons.receipt_outlined, color: AppColors.info),
@@ -283,35 +283,35 @@ class _ProfitTab extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         // Summary stats
         Row(children: [
-          Expanded(child: StatCard(
+          Expanded(child: SizedBox(height: 100, child: StatCard(
             title: 'إجمالي الإيرادات',
             value: '${revenue.toStringAsFixed(2)} $currency',
             icon: Icons.trending_up,
             color: AppColors.success,
-          )),
+          ))),
           const SizedBox(width: 12),
-          Expanded(child: StatCard(
+          Expanded(child: SizedBox(height: 100, child: StatCard(
             title: 'إجمالي التكاليف',
             value: '${cost.toStringAsFixed(2)} $currency',
             icon: Icons.money_off,
             color: AppColors.error,
-          )),
+          ))),
         ]),
         const SizedBox(height: 12),
         Row(children: [
-          Expanded(child: StatCard(
+          Expanded(child: SizedBox(height: 100, child: StatCard(
             title: 'صافي الربح',
             value: '${profit.toStringAsFixed(2)} $currency',
             icon: Icons.account_balance,
             color: profit >= 0 ? AppColors.gold : AppColors.error,
-          )),
+          ))),
           const SizedBox(width: 12),
-          Expanded(child: StatCard(
+          Expanded(child: SizedBox(height: 100, child: StatCard(
             title: 'نسبة الربح',
             value: '${margin.toStringAsFixed(1)}%',
             icon: Icons.percent,
             color: margin > 20 ? AppColors.success : (margin > 10 ? AppColors.warning : AppColors.error),
-          )),
+          ))),
         ]),
         const SizedBox(height: 24),
 
@@ -470,7 +470,7 @@ class _InventoryTab extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         GridView.count(
           crossAxisCount: 2, shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
-          crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: 1.4,
+          crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: 1.3,
           children: [
             StatCard(title: 'قيمة المخزون (تكلفة)', value: '${totalValue.toStringAsFixed(2)} $currency', icon: Icons.account_balance_wallet_outlined, color: AppColors.info),
             StatCard(title: 'قيمة المخزون (بيع)', value: '${totalSaleValue.toStringAsFixed(2)} $currency', icon: Icons.trending_up, color: AppColors.success),

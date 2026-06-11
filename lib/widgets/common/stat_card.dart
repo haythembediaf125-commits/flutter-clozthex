@@ -25,7 +25,7 @@ class StatCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12), // Reduced padding slightly
         decoration: BoxDecoration(
           color: AppColors.card,
           borderRadius: BorderRadius.circular(12),
@@ -33,37 +33,66 @@ class StatCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min, // Use minimum space
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(8), // Reduced icon padding
                   decoration: BoxDecoration(
                     color: c.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(icon, color: c, size: 22),
+                  child: Icon(icon, color: c, size: 20), // Reduced icon size
                 ),
                 if (subtitle != null)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.surfaceVariant,
-                      borderRadius: BorderRadius.circular(20),
+                  Flexible( // Added Flexible to prevent subtitle overflow
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: AppColors.surfaceVariant,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        subtitle!,
+                        style: const TextStyle(fontSize: 10, color: AppColors.textMuted),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                    child: Text(subtitle!, style: const TextStyle(fontSize: 11, color: AppColors.textMuted)),
                   ),
               ],
             ),
-            const SizedBox(height: 14),
-            Text(value,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: c, fontFamily: 'Cairo'),
+            const SizedBox(height: 10), // Reduced spacing
+            Expanded( // Use Expanded with FittedBox to ensure value fits
+              child: Align(
+                alignment: Alignment.centerRight, // Align to right for Arabic
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    value,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                      color: c,
+                      fontFamily: 'Cairo',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 12, // Reduced title size
+                color: AppColors.textSecondary,
+                fontFamily: 'Cairo',
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 4),
-            Text(title, style: const TextStyle(fontSize: 13, color: AppColors.textSecondary, fontFamily: 'Cairo')),
           ],
         ),
       ),

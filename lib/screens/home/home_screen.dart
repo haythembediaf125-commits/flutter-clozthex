@@ -144,7 +144,7 @@ class _DashboardPageState extends State<_DashboardPage> {
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 12,
                       mainAxisSpacing: 12,
-                      childAspectRatio: 1.4,
+                      childAspectRatio: 1.3,
                       children: [
                         StatCard(
                           title: 'إجمالي المبيعات',
@@ -172,7 +172,7 @@ class _DashboardPageState extends State<_DashboardPage> {
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 12,
                       mainAxisSpacing: 12,
-                      childAspectRatio: 1.4,
+                      childAspectRatio: 1.3,
                       children: [
                         StatCard(
                           title: 'إجمالي المنتجات',
